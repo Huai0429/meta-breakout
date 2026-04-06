@@ -1,0 +1,23 @@
+diff --git a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+index 9d91736..c75a0c5 100644
+--- a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
++++ b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+@@ -88,6 +88,18 @@
+ 		};
+ 	};
+ 
++	button-detect {
++		compatible = "Quanta,button-detect";
++		button_user1-gpios = <&gpioc 5 GPIO_ACTIVE_LOW>;
++		button_user2-gpios = <&gpioc 11 GPIO_ACTIVE_LOW>;
++		led_blue-gpios = <&gpioh 7 GPIO_ACTIVE_HIGH>;
++		led_green-gpios = <&gpioh 5 GPIO_ACTIVE_HIGH>;
++		label = "Users-Button";
++		interrupt-parent = <&gpioc>;
++		interrupts = <5 IRQ_TYPE_EDGE_BOTH>, <11 IRQ_TYPE_EDGE_BOTH>;
++		status = "okay";
++	};
++
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+ 

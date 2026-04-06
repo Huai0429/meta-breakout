@@ -1,0 +1,23 @@
+diff --git a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+index 8386a16..05a01c5 100644
+--- a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
++++ b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+@@ -827,7 +827,17 @@
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&spi6_pins_a>;
+ 	pinctrl-1 = <&spi6_sleep_pins_a>;
+-	status = "disabled";
++	cs-gpios = <&gpioz 7 GPIO_ACTIVE_LOW>; /*GPIO 25*/
++	status = "okay";
++		TFT@0{
++		compatible = "ilitek,ili9488";
++		reg = <0>;
++		spi-max-frequency = <16000000>;
++		buswidth = <8>;
++		led-gpios = <&gpioz 0 GPIO_ACTIVE_HIGH>; /*GPIO 22*/
++		dc-gpios = <&gpioz 1 GPIO_ACTIVE_HIGH>;	 /*GPIO 23*/
++		reset-gpios = <&gpioz 6 GPIO_ACTIVE_LOW>; /*GPIO 24*/
++	};
+ };
+ 
+ &timers3 {
