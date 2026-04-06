@@ -1,0 +1,5 @@
+config FB_ILI9488
+    tristate "ILITEK ILI9488 Framebuffer support"
+    depends on FB && SPI
+    help
+      Say Y here if you want to support ILI9488 LCD panels.
